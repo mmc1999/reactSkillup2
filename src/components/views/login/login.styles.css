@@ -1,0 +1,75 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@200;400;700&display=swap");
+
+.auth {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+* {
+  font-family: "Nunito", sans-serif;
+}
+
+.auth > form {
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.auth > form > div {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  flex-direction: column;
+  padding: 5px 0;
+}
+
+.auth > form > div > *:not(label) {
+  padding: 8px 0;
+}
+
+.auth > form > div > div {
+  color:var(--global-primary-color);
+}
+
+.auth input {
+  border-radius: var(--border-radius);
+  border:var(--global-border);
+}
+
+.auth button {
+    cursor:pointer;
+    background-color:var(--global-primary-color);
+    transition: background-color 0.8s ease-out;
+    border-radius:var(--global-radius);
+    border:0;
+    color:white;
+    padding: 10px !important;
+    font-size: 16px;
+}
+
+.auth button:hover {
+  cursor:pointer;
+  color:var(--global-primary-color);
+  border-radius:var(--global-radius);
+  border: 1px solid var(--global-primary-color);
+  background-color:white;
+  padding: 10px !important;
+  font-size: 16px;
+}
+
+@media screen and (min-width:600px) {
+  .auth {
+    background-color: var(--global-bg-color-soft);
+  }
+  .auth > form {
+    border: var(--global-border) ;
+    width: 400px;
+    border-radius: var(--global-radius);
+    box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+    background-color: white;
+  }
+}
