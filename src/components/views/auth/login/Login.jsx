@@ -1,7 +1,7 @@
 //import react, { useState } from "react"
 import {useFormik} from "formik"
-import {useNavigate} from "react-router-dom"
-import "./login.styles.css";
+import {Link, useNavigate} from "react-router-dom"
+import "../auth.styles.css";
 
 const Login = () => {
     //const [form, setForm] = useState(initialForm);
@@ -48,6 +48,11 @@ const Login = () => {
           </div>
           <div>
             <button type="submit">Enviar</button>
+          </div>
+          <div>
+            <Link to="/register" >
+              Registrarme
+            </Link>
           </div>
         </form>
       </div>

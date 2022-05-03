@@ -35,7 +35,15 @@ const Tareas = () => {
             <div className="list_group">
               <div className="list">
                 <h4>Nuevas</h4>
-                
+                <div className="list">{renderAllCards()}</div>
+              </div>
+              <div className="list">
+                <h4>In-progress</h4>
+                <div className="list">{renderAllCards()}</div>
+              </div>
+              <div className="list">
+                <h4>Terminadas</h4>
+                <div className="list">{renderAllCards()}</div>
               </div>
             </div>
           )}

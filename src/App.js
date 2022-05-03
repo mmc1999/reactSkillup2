@@ -1,10 +1,11 @@
 import './App.css';
-import Login from './components/views/login/Login';
+import Login from './components/views/auth/login/Login';
 //import Register from './components/views/register/Register';
 import Tareas from './components/views/tareas/Tareas';
 import {Routes, Route, Navigate, useLocation} from "react-router-dom"
 import {AnimatePresence, motion} from "framer-motion"
 import {lazy,Suspense } from "react"
+import Register from './components/views/auth/register/Register';
 
 const RequiredOut = ({children}) => {
     if(!localStorage.getItem("logged")) {
@@ -46,6 +47,14 @@ export const App = () => {
                     element={
                         <motion.div className="page" initial="out" animate="in" exit="out" variants={pageTransition}>
                             <Login />
+                        </motion.div>
+                    } 
+                />
+                <Route 
+                    path="/register" 
+                    element={
+                        <motion.div className="page" initial="out" animate="in" exit="out" variants={pageTransition}>
+                            <Register />
                         </motion.div>
                     } 
                 />

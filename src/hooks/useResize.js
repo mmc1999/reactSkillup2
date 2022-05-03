@@ -4,8 +4,11 @@ export const useResize = () => {
   const [isPhone, setIsPhone] = useState(window.innerWidth < 900 ? true : false);
   
   const handleResize = () => {
-    if(window.innerWidth < 900) setIsPhone(true)
-    else setIsPhone(false)
+    if(window.innerWidth < 900) {
+      setIsPhone(true)
+    } else {
+      setIsPhone(false)
+    }
   }
 
   useEffect(() => {
