@@ -3,6 +3,7 @@ import {useFormik} from "formik";
 import {Link, useNavigate} from "react-router-dom";
 import "../auth.styles.css";
 import * as Yup from "yup";
+import {alert} from "../../../../utils/alert";
 
 const { REACT_APP_API_ENDPOINT } = process.env
 
@@ -23,25 +24,27 @@ const Login = () => {
       })
     
       const onSubmit = (e) => {
+        console.log(values)
         fetch(`${REACT_APP_API_ENDPOINT}auth/login`, {
           method:"POST",
           headers: {
             "Content-Type":"application/json"
           },
           body:JSON.stringify({
-            user: {
-              userName: values.userName,
-              password:values.password,
-            }
+            userName: values.userName,
+            password:values.password,
           })
         })
         .then(response => response.json())
         .then(data => {
-          navigate("/", {replace:true})
-          localStorage.setItem("logged", data?.result?.token)
+          if(data.status_code === 200) {
+            localStorage.setItem("logged", data?.result?.token)
+            navigate("/", {replace:true})
+          } else {
+            alert()
+          }
         })
       }
-
 
     const formik = useFormik({initialValues, validationSchema ,onSubmit});
     
@@ -53,7 +56,7 @@ const Login = () => {
           <h1>Iniciar sesion</h1>
           <div>
             <label>UserName</label>
-            <input type="text" name="userName"  value={values.userName} onChange={handleChange} onBlur={handleBlur} />
+            <input type="text" name="userName" value={values.userName} onChange={handleChange} onBlur={handleBlur} />
             {errors.userName && touched.userName && <p className='error-message'>{errors.userName}</p>}
           </div>
           <div>

@@ -69,7 +69,6 @@ const Register = () => {
       })
       .then(response => response.json())
       .then(data => navigate("/registered/"+data.result.user.teamID))
-      alert("puto")
     }
 
     const formik = useFormik({initialValues, validationSchema ,onSubmit});
