@@ -1,0 +1,32 @@
+.card {
+    width: 200px;
+    height: auto;
+    word-wrap: break-word;
+}
+.card button.finished {
+    background-color: #1ec876 !important;
+    border-color:#1ec876  !important;
+}
+.card button.finished:hover {
+    background-color: white !important;
+    color:#1ec876  !important;
+}
+.card button.low {
+    background-color: #007bff !important;
+    border-color:#007bff  !important;
+}
+.card button.low:hover {
+    background-color: white !important;
+    color: #007bff !important;
+}
+.card button.medium,
+.card button.progress {
+    background-color: #fbde3f !important;
+    border-color:#fbde3f  !important;
+    color: black !important;
+}
+.card button.medium:hover,
+.card button.progress:hover {
+    background-color: black !important;
+    color: #fbde3f !important;
+}

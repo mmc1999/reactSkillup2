@@ -6,13 +6,17 @@ const Header = ( ) => {
 
     const handleLogout= () => {
         localStorage.removeItem("logged")
+        localStorage.removeItem("userName")
         navigate("/login", {replace:true});
     }
 
     return (
         <header>
             <span>GOSCRUM</span>
-            <div onClick={handleLogout}>x</div>
+            <div className="wrapper_right_header">
+                <div>{localStorage.getItem("userName")}</div>
+                <div onClick={handleLogout}>x</div>
+            </div>
         </header>
     )
 }

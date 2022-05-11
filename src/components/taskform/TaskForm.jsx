@@ -49,6 +49,7 @@ export const TaskForm = () => {
       })
     }
 
+
   const formik = useFormik({initialValues, validationSchema ,onSubmit});
   
   const {handleSubmit, handleChange, values, errors, touched, handleBlur, resetForm} = formik
@@ -60,11 +61,25 @@ export const TaskForm = () => {
         <form onSubmit={handleSubmit}>
           <div>
             <div>
-              <input type="text" name="title" onChange={handleChange} onBlur={handleBlur}  placeholder="Agregue un titulo"  className={errors.title && touched.title ? 'error' : ""} value={values.title}/>
+              <input 
+                type="text" 
+                name="title" 
+                onChange={handleChange} 
+                onBlur={handleBlur}  
+                placeholder="Agregue un titulo"  
+                className={errors.title && touched.title ? 'error' : ""} 
+                value={values.title}
+              />
               {errors.title && touched.title && <p className='error-message'>{errors.title}</p>}
             </div>
             <div>
-              <select name="status" onChange={handleChange} onBlur={handleBlur} className={errors.status && touched.status ? 'error' : ""} value={values.status}>
+              <select 
+                name="status" 
+                onChange={handleChange} 
+                onBlur={handleBlur} 
+                className={errors.status && touched.status ? 'error' : ""} 
+                value={values.status}
+              >
                 <option value="" >Seleccionar un estado</option>
                 <option value="NEW">Nueva</option>
                 <option value="IN PROGRESS">En proceso</option>
@@ -73,7 +88,13 @@ export const TaskForm = () => {
               {errors.status && touched.status && <p className='error-message'>{errors.status}</p>}
             </div>
             <div>
-              <select name="importance" onChange={handleChange} onBlur={handleBlur} className={errors.importance && touched.importance ? 'error' : ""} value={values.importance}>
+              <select 
+                name="importance" 
+                onChange={handleChange} 
+                onBlur={handleBlur} 
+                className={errors.importance && touched.importance ? 'error' : ""} 
+                value={values.importance}
+              >
                 <option value="">Seleccionar una prioridad</option>
                 <option value="LOW">Baja</option>
                 <option value="MEDIUM">Media</option>

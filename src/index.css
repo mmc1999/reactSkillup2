@@ -6,9 +6,12 @@
   --global-radius:8px;
   --global-border:0.5px solid #e9e9e9;
 }
-
+* {
+  box-sizing: border-box;
+}
 body {
   margin: 0;
+  width: 100%;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
