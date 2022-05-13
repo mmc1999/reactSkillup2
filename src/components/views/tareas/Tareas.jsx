@@ -8,34 +8,35 @@ import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 import { FormControl, FormControlLabel, RadioGroup, FormLabel, Radio} from "@mui/material";
 import debounce from "lodash.debounce";
-
-const { REACT_APP_API_ENDPOINT } = process.env
+import { useSelector, useDispatch } from "react-redux";
+import { getTasks, deleteTask } from "../../action/tasksAction";
 
 
 const Tareas = () => {
   const [list, setList] = useState(null);
-  const [loading, setLoading] = useState(false);
   const [renderList, setRenderList] = useState([]);
   const [tasksFromWho, setTasksFromWho] = useState("ALL")
   const [search, setSearch] = useState("")
+  const dispatch = useDispatch();
 
   let { isPhone } = useResize();
 
   useEffect(() => {
-    setLoading(true)
-    fetch(`${REACT_APP_API_ENDPOINT}task${tasksFromWho === "ME" ? "/me" : ""}`, {
-      headers: {
-        "Content-Type":"application/json",
-        "Authorization":"Bearer "+ localStorage.getItem("logged")
-      },
-    })
-    .then(response => response.json())
-    .then(data => {
-      setList(data.result);
-      setRenderList(data.result);
-      setLoading(false);
-    })
+    dispatch(getTasks(tasksFromWho === "ME" ? "me" : ""))
   }, [tasksFromWho])
+
+  const {loading, error, tasks} = useSelector(state => {
+    return state.tasksReducer
+  })
+
+  useEffect(() => {
+    if(tasks.length) {
+      setList(tasks);
+      setRenderList(tasks)
+    }
+  
+  }, [tasks])
+  
 
   useEffect(() => {
     if(search)
@@ -43,13 +44,15 @@ const Tareas = () => {
     else setRenderList(list)
   }, [search])
   
+  if(error) return <div>Hay un error</div>
+
   
   const renderAllCards = () => {
-    return renderList?.map((el) => <Card key={el.id} el={el} />);
+    return renderList?.map((el) => <Card key={el.id} el={el} deleteCard={handleDelete} />);
   };
 
   const renderColumnCards = (text) => {
-    return renderList?.filter(data => data.status === text).map((el) => <Card key={el._id} el={el} />);
+    return renderList?.filter(data => data.status === text).map((el) => <Card key={el._id} el={el} deleteCard={handleDelete} />);
   };
 
 
@@ -66,6 +69,7 @@ const Tareas = () => {
     setSearch(e?.target?.value)
   }, 1000)
   
+  const handleDelete = (id) => dispatch(deleteTask(id)) 
 
   return (
     <>
