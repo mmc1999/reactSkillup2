@@ -1,6 +1,7 @@
 {
   "name": "skill-up",
   "version": "0.1.0",
+  "homepage": "https://mmc1999.github.io/reactSkillup2",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.9.0",
@@ -13,6 +14,7 @@
     "@testing-library/user-event": "^13.5.0",
     "formik": "^2.2.9",
     "framer-motion": "^6.3.2",
+    "gh-pages": "^4.0.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-loading-skeleton": "^3.1.0",
