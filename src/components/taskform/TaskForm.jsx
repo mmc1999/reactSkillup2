@@ -23,7 +23,7 @@ export const TaskForm = () => {
       title:Yup
         .string()
         .min(6, "La cantidad minima de caracteres es 6")
-        .required("por fa pone el titulo"),
+        .required("por favor pone el titulo"),
       status: Yup.string().required(),
       importance:Yup.string().required(),
       description: Yup.string().required()
