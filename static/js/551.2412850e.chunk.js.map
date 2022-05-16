@@ -1,0 +1,1 @@
+{"version":3,"file":"static/js/551.2412850e.chunk.js","mappings":"qIAUA,UARiB,WACf,OACE","sources":["components/views/error/Error404.jsx"],"sourcesContent":["import React from 'react'\r\n\r\nconst Error404 = () => {\r\n  return (\r\n    <div>\r\n      Pagina no encontrada\r\n    </div>\r\n  )\r\n}\r\n\r\nexport default Error404"],"names":[],"sourceRoot":""}
