@@ -103,7 +103,7 @@ export const TaskForm = () => {
               {errors.importance && touched.importance && <p className='error-message'>{errors.importance}</p>}
             </div>
           </div>
-          <div>
+          <div className="divTextArea">
             <textarea 
               name="description" 
               onChange={handleChange} 

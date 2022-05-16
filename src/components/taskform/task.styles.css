@@ -37,6 +37,11 @@
     position: relative;
     width: 100%;
     box-sizing: border-box;
+    resize: none;
+}
+.task-form > form > div.divTextArea {
+    display: flex;
+    flex-direction: column;
 }
 .task-form input.error ,.task-form select.error,.task-form textarea.error {
     border: 1px solid red;
