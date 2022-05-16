@@ -9,7 +9,7 @@ import 'react-loading-skeleton/dist/skeleton.css'
 import { FormControl, FormControlLabel, RadioGroup, FormLabel, Radio} from "@mui/material";
 import debounce from "lodash.debounce";
 import { useSelector, useDispatch } from "react-redux";
-import { getTasks, deleteTask } from "../../action/tasksAction";
+import { getTasks, deleteTask, editTaskStatus } from "../../action/tasksAction";
 
 
 const Tareas = () => {
@@ -48,11 +48,11 @@ const Tareas = () => {
 
   
   const renderAllCards = () => {
-    return renderList?.map((el) => <Card key={el.id} el={el} deleteCard={handleDelete} />);
+    return renderList?.map((el) => <Card key={el.id} el={el} deleteCard={handleDelete} editCardStatus={handleEditCardStatus} />);
   };
 
   const renderColumnCards = (text) => {
-    return renderList?.filter(data => data.status === text).map((el) => <Card key={el._id} el={el} deleteCard={handleDelete} />);
+    return renderList?.filter(data => data.status === text).map((el) => <Card key={el._id} el={el} deleteCard={handleDelete} editCardStatus={handleEditCardStatus}  />);
   };
 
 
@@ -70,6 +70,8 @@ const Tareas = () => {
   }, 1000)
   
   const handleDelete = (id) => dispatch(deleteTask(id)) 
+
+  const handleEditCardStatus = data => dispatch(editTaskStatus(data))
 
   return (
     <>

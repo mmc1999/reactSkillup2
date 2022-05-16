@@ -7,6 +7,7 @@ import {AnimatePresence, motion} from "framer-motion"
 import {lazy,Suspense } from "react"
 import Register from './components/views/auth/register/Register';
 import Registered from './components/views/registered/Registered';
+import Donate from './components/views/donate/Donate';
 
 const RequiredOut = ({children}) => {
     if(!localStorage.getItem("logged")) {
@@ -64,6 +65,14 @@ export const App = () => {
                     element={
                         <motion.div className="page" initial="out" animate="in" exit="out" variants={pageTransition}>
                             <Registered />
+                        </motion.div>
+                    } 
+                />
+                <Route 
+                    path="/donate" 
+                    element={
+                        <motion.div className="page" initial="out" animate="in" exit="out" variants={pageTransition}>
+                            <Donate />
                         </motion.div>
                     } 
                 />

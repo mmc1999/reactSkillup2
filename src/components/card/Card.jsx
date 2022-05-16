@@ -2,7 +2,12 @@ import React, { useState } from "react";
 import "./card.styles.css"
 
 
-const Card = ({ deleteCard, el: {_id,title,createdAt, user: {userName},description,status,importance}}) => {
+const Card = ({ 
+  editCardStatus, 
+  deleteCard, 
+  el: {_id,title,createdAt, user: {userName},description,status,importance},
+  el
+}) => {
   const [show, setShow] = useState(false);
   const limitString = (str) => {
     if (str.length > 170) {
@@ -18,8 +23,8 @@ const Card = ({ deleteCard, el: {_id,title,createdAt, user: {userName},descripti
       <h3>{title}</h3>
       <h6>{dataTime}</h6>
       <h5>{userName}</h5>
-      <button className={status.toLowerCase()} type="button">{status.toLowerCase()}</button>
-      <button className={importance.toLowerCase()} type="button">{importance.toLowerCase()}</button>
+      <button className={status.toLowerCase()} type="button" onClick={() => editCardStatus(el)}>{status.toLowerCase()}</button>
+      <button className={importance.toLowerCase()} type="button">{importance.toLowerCase(el)}</button>
       {!show && <p>{limitString(description).string}</p>}
       {
         show 

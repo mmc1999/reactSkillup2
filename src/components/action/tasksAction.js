@@ -25,10 +25,36 @@ export const getTasks = (path) => dispatch => {
 }
 
 export const deleteTask = (id) => dispatch => {
-    dispatch(tasksRequest())
+    //dispatch(tasksRequest())
     fetch(`${REACT_APP_API_ENDPOINT}task/${id}`,{
         method: "DELETE",
         headers: {'Content-Type': "application/json", Authorization: "Bearer "+localStorage.getItem("logged")}
+    })
+    .then(response => response.json())
+    .then(() => dispatch(getTasks("")))
+    .catch(error => dispatch(tasksFailed(error)))
+}
+
+export const editTaskStatus = (data) => dispatch => {
+    const statusArray = ["NEW", "IN PROGRESS", "FINISHED"]
+    
+    const newStatusIndeX = 
+        statusArray.indexOf(data.status) > 1 
+            ? 0 
+            : statusArray.indexOf(data.status) + 1
+
+    fetch(`${REACT_APP_API_ENDPOINT}task/${data._id}`,{
+        method: "PATCH",
+        headers: {'Content-Type': "application/json", Authorization: "Bearer "+localStorage.getItem("logged")},
+        body: JSON.stringify({
+            "task": {
+                "title":data.title,
+                "importance": data.importance,
+                "status": statusArray[newStatusIndeX],
+                "description": data.description 
+            }
+        })
+    
     })
     .then(response => response.json())
     .then(() => dispatch(getTasks("")))
